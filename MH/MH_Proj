@@ -1,0 +1,33 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+df = pd.read_csv('/Users/kaylawright-freeman/Documents/data/Student Mental health.csv')
+# print(df.keys())
+
+new_table = pd.DataFrame({'time':df['Timestamp'],
+                          'gender':df['Choose your gender'],
+                          'age':df['Age'],
+                          'course':df['What is your course?'],
+                          'year':df['Your current year of Study'],
+                          'GPA':df['What is your CGPA?'],
+                          'mar_stat':df['Marital status'],
+                          'depression':df['Do you have Depression?'],
+                          'anxiety':df['Do you have Anxiety?'],
+                          'panic':df['Do you have Panic attack?'],
+                          'treat':df['Did you seek any specialist for a treatment?']})
+# print(new_table)
+
+## do another wherer you create the DF by looping through the keys
+
+
+
+
+
+## pie chart each attribute (gender, age, course, year, gpa bin, mar status, depression, anxiety, panic, treatment)
+f = new_table['gender'][new_table['gender']=='Female']
+m = new_table['gender'][new_table['gender']=='Male']
+g = [100*len(f)/len(new_table['gender']),
+     100*len(m)/len(new_table['gender'])]
+labels = ['female','male']
+fig,ax = plt.subplots()
+ax.pie(g, labels=labels, autopct='%1.1f%%')
+plt.show()
